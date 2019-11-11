@@ -1,0 +1,109 @@
+view.problex.com {
+        tls josiah@problex.com
+        proxy / 10.1.1.19:8080 {
+		websocket
+		transparent
+	}
+}
+#server.problex.com {
+#	tls josiah@problex.com
+#        proxy / 10.1.1.19:8080 {
+#                websocket
+#                transparent
+#        }
+#}
+bitwarden.problex.com {
+        tls josiah@problex.com
+        proxy / 10.1.1.16:88
+}
+#ender.problex.com {
+#        tls thefeilder@gmail.com
+#        proxy / 10.1.1.28:80 {
+#                transparent
+#        }
+#}
+#ultimaker.problex.com {
+#        tls thefeilder@gmail.com
+#        proxy / 10.1.1.10:80 {
+#                transparent
+#        }
+#}
+#octoprint.problex.com {
+#	tls thefeilder@gmail.com
+#	proxy / 10.1.1.10:80 {
+#		transparent
+#	}
+#}
+#wok.problex.com {
+#        tls thefeilder@gmail.com
+#        proxy / 10.1.1.29:443 {
+#		websocket
+#                transparent
+#        }
+#}
+#docker.problex.com {
+#	tls thefeilder@gmail.com
+#	proxy / localhost:9000 {
+#		websocket
+#		transparent
+#	}
+#}
+#rocket.problex.com {
+#	tls thefeilder@gmail.com
+#	proxy / localhost:3000 {
+#		websocket
+#		transparent
+#	}
+#}
+#server.problex.com {
+#	proxy / 10.1.1.18:18081 {
+#		transparent
+#	}
+#}
+home.problex.com {
+	tls josiah@problex.com
+	gzip
+	proxy / 10.1.1.29:3579
+        proxy /radarr 10.1.1.3:37878
+        proxy /nzbget 10.1.1.29:6789
+	proxy /lidarr 10.1.1.29:8686
+        proxy /deluge 10.1.1.12:8112 {
+		without /deluge
+		header_upstream X-Deluge-Base "/deluge"
+		transparent
+	}
+	proxy /nzbhydra 10.1.1.29:5076 {
+		transparent
+	}
+	proxy /sonarr 10.1.1.3:38989 {
+	
+	}
+
+	proxy /rocket localhost:3000 {
+		websocket	
+		transparent
+	}
+	proxy /invoice 10.1.1.29:10080 {
+		without /invoice
+		transparent
+	}
+
+#	proxy /ender 10.1.1.28:80 {
+#		without /ender
+#		websocket
+#		transparent
+#	}
+#       proxy /wok 10.1.1.29:443 {
+#                websocket
+#                transparent
+#        }
+}
+#reauth {
+#path /sonarr
+#path /radarr
+#path /nzbget
+#path /plexpy
+#path /headphones
+#        failure redirect target=https://home.problex.com/
+#	upstream url=https://home.problex.com/auth.php?admin,cookies=true
+#}
